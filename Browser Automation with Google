@@ -1,0 +1,31 @@
+  import time
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.edge.service import Service
+    
+    countries = ['US' , 'India' , 'Sri Lanka' , 'Pakistan']
+    
+    # Provide the correct path to msedgedriver.exe
+    s = Service("C:\\Program Files\\msedgedriver.exe")
+    browser = webdriver.Edge(service=s)
+    
+    for country in countries: 
+    try:
+    browser.get('https://www.google.com/')
+    query = 'https://www.google.com/''When is independence day for '+ country + '?'
+    
+    # Locate the search input field by name 'q'
+    text_field = browser.find_element(by=By.NAME, value='q'
+    text_field.clear()             # Clear any existing text in the field
+    text_field.send_keys(query)
+    text_field.submit()
+    
+    time.sleep(2)
+    result = browser.find_element(by=By.XPATH, value="//div[@class='BNeawe iBp4i AP7Wnd']")
+    print(f"Independence day for {country}: {result.text}")
+    time.sleep(2)
+    except Exception as e:
+    print(f"An error occurred for {country}: {str(e)}")
+    
+    # Close the browser when done
+    browser.quit()
