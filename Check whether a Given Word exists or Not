@@ -1,0 +1,11 @@
+  from selenium import webdriver
+    import time
+    from selenium.webdriver.edge.service import Service
+    s = Service("C:\Program Files\msedgedriver.exe")
+    browser = webdriver.Edge(service=s) 
+    
+    browser.get('https://www.btreesystems.com/selenium-with-python-training-in-chennai/')
+    
+    get_source=browser.page_source
+    search_text="Selenium"
+    print(search_text in get_source)
