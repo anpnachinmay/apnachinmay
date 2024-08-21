@@ -1,0 +1,20 @@
+    g_link="https://www.google.com/maps/@13.0478078,80.0442021,11z?entry=ttu"
+    ip_link='//*[@id="searchboxinput"]'
+    dire='//*[@id="hArJGc"]/div'
+    
+    import time
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.edge.service import Service
+    
+    s = Service("C:\Program Files\msedgedriver.exe")
+    browser = webdriver.Edge(service=s)
+    
+    browser.get(g_link)
+    time.sleep(2)
+    
+    name=str(input("Enter Location: "))
+    n=browser.find_element(by=By.XPATH, value=ip_link)
+    n.send_keys(name)
+    directions=browser.find_element(by=By.XPATH, value=dire)
+    directions.click()
